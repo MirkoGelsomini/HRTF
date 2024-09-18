@@ -1046,7 +1046,7 @@ body.light-mode .video-bg:before {
 }
 
 .hrtf_viz {
-  width: calc(75% - 20px) !important;
+  width: calc(66% - 20px) !important;
   background-color: var(--content-bg);
   height: 500px;
   background-size: contain;
