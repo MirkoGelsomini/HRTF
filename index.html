@@ -1,0 +1,636 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRTF.ly</title>
+  <script src="./assets/scripts/jquery.min.js"></script>
+  <script src="./assets/scripts/script.js"></script>
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/materialdesignicons.min.css">
+</head>
+
+<body>
+  <div class="dark-light">
+    <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+    </svg>
+  </div>
+  <div class="app">
+    <div class="header">
+      <!--<div class="menu-circle"></div>-->
+      <div class="logo" data-goto="profile"></div>
+      <div class="logo_text" data-goto="profile">HRTF.ly</div>
+      <div class="header-menu">
+        <a class="menu-link  is-active" href="#">HRTF</a>
+        <a class="menu-link" href="#">Test</a>
+        <a class="menu-link notify" href="#">Test</a>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search">
+      </div>
+      <div class="header-profile">
+        <div class="notification">
+          <span class="notification-number">3</span>
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="feather feather-bell">
+            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0" />
+          </svg>
+        </div>
+        <svg viewBox="0 0 512 512" fill="currentColor">
+          <path
+            d="M448.773 235.551A135.893 135.893 0 00451 211c0-74.443-60.557-135-135-135-47.52 0-91.567 25.313-115.766 65.537-32.666-10.59-66.182-6.049-93.794 12.979-27.612 19.013-44.092 49.116-45.425 82.031C24.716 253.788 0 290.497 0 331c0 7.031 1.703 13.887 3.006 20.537l.015.015C12.719 400.492 56.034 436 106 436h300c57.891 0 106-47.109 106-105 0-40.942-25.053-77.798-63.227-95.449z" />
+        </svg>
+        <img class="profile-img" src="./assets/images/head.png" alt="">
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="left-side">
+        <div class="side-wrapper">
+          <div class="side-title">Home</div>
+          <div class="side-menu">
+            <a href="#" data-goto="apps">
+              <span class="mdi mdi-view-dashboard"></span>
+              Dashboard
+            </a>
+          </div>
+          <div class="side-menu">
+            <a href="#" data-goto="profile">
+              <span class="mdi mdi-account"></span>
+              My profile
+            </a>
+          </div>
+          <!--<div class="side-menu">
+            <a href="#" data-goto="test1">
+              <span class="mdi mdi-scan-helper"></span>
+              New scan - test 1
+            </a>
+          </div>
+          <div class="side-menu">
+            <a href="#" data-goto="test2">
+              <span class="mdi mdi-scan-helper"></span>
+              New scan - test 2
+            </a>
+          </div>
+          <div class="side-menu">
+            <a href="#">
+              <span class="mdi mdi-face-recognition"></span>
+              My scans
+            </a>
+          </div>
+          <div class="side-menu">
+            <a href="#">
+              <span class="mdi mdi-share-variant"></span>
+              Shared scans
+            </a>
+          </div>-->
+        </div>
+        <div class="side-wrapper">
+          <div class="side-title">Scans</div>
+          <div class="side-menu">
+            <a href="#" data-goto="newScan">
+              <span class="mdi mdi mdi-scan-helper"></span>
+              New scan
+            </a>
+            <a href="#" data-goto="myScans">
+              <span class="mdi mdi-face-recognition"></span>
+              My scans
+              <span class="notification-number updates" id="myNumber_scan">3</span>
+            </a>
+          </div>
+        </div>
+        <div class="side-wrapper">
+          <div class="side-title">Experiments</div>
+          <div class="side-menu">
+            <a href="#" data-goto="apps" data-goto="newExperiment">
+              <span class="mdi mdi mdi-cast-audio-variant"></span>
+              New experiment
+            </a>
+            <a href="#" data-goto="myExperiments">
+              <span class="mdi mdi-ear-hearing-loop"></span>
+              My experiments
+              <span class="notification-number updates" id="myNumber_experiment">3</span>
+            </a>
+          </div>
+        </div>
+        <div class="side-wrapper">
+          <div class="side-title">HRTF</div>
+          <div class="side-menu is-active">
+            <a href="#" data-goto="hrtf">
+              <span class="mdi mdi mdi-ear-hearing"></span>
+              My HRTF
+            </a>
+          </div>
+          <div class="side-menu">
+            <a href="#" data-goto="sofa">
+              <span class="mdi mdi mdi-cast-audio"></span>
+              Sofa Viewer
+            </a>
+          </div>
+        </div>
+        <!--<div class="side-wrapper">
+          <div class="side-title">Categories</div>
+          <div class="side-menu">
+            <a href="#">
+              <span class="mdi mdi-virtual-reality"></span>
+              Virtual Reality
+            </a>
+            <a href="#">
+              <span class="mdi mdi-augmented-reality"></span>
+              Augmented Reality
+            </a>
+            <a href="#">
+              <span class="mdi mdi-video-box"></span>
+              Video Production
+            </a>
+            <a href="#">
+              <span class="mdi mdi-surround-sound"></span>
+              Sound Design
+            </a>
+            <a href="#">
+              <span class="mdi mdi-cellphone-sound"></span>
+              Assistive Listening
+            </a>
+            <a href="#">
+              <span class="mdi mdi-magnify"></span>
+              Acoustics Research
+            </a>
+          </div>
+        </div>-->
+        <div class="side-wrapper">
+          <div class="side-title">Resources</div>
+          <div class="side-menu">
+            <a href="#">
+              <span class="mdi mdi-apps" data-goto="apps"></span>
+              Apps
+            </a>
+            <a href="#">
+              <span class="mdi mdi-school"></span>
+              Tutorials
+            </a>
+            <a href="#">
+              <span class="mdi mdi-email"></span>
+              Contact us
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="main-container">
+
+        <!--<div class="main-header">
+          <a class="menu-link-main" href="#">All Apps</a>
+          <div class="header-menu">
+            <a class="main-header-link is-active" href="#">Desktop</a>
+            <a class="main-header-link" href="#">Mobile</a>
+            <a class="main-header-link" href="#">Web</a>
+
+          </div>
+        </div>-->
+
+        <!-- PROFILE PAGE-->
+        <div class="content-wrapper" id="profile">
+          <div class="content-section">
+            <div class="apps-card">
+              <div class="app-card">
+                <ul class="userInfo">
+                  <li>
+                    <div class="products">
+                      First Name
+                    </div>
+                    <span class="status">
+                      Jane
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Last Name
+                    </div>
+                    <span class="status">
+                      Doe
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Age
+                    </div>
+                    <span class="status">
+                      45
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      E-mail
+                    </div>
+                    <span class="status">
+                      <span class="mdi mdi-email" title="john.doe@gmail.com"></span>
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Dummy
+                    </div>
+                    <span class="status">
+                      Text
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Dummy
+                    </div>
+                    <span class="status">
+                      Text
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Dummy
+                    </div>
+                    <span class="status">
+                      Text
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="app-card userModel">
+
+                <iframe src="./pages/faces/face4/index.html" id="userModel" frameBorder="0" width="100%"
+                  height="280"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="content-section">
+            <div class="content-section-title">Discover more about your scan</div>
+            <div class="apps-card">
+              <div class="app-card">
+                <span>
+                  Configure
+                </span>
+                <div class="app-card__subtext">
+                  <iframe src="./pages/faces/face5/examples/index.html?small" id="configurator" frameBorder="0"
+                    width="100%" height="140"></iframe>
+                  Personalize your head parameters.
+                </div>
+                <div class="app-card-buttons">
+                  <button class="content-button status-button open" data-goto="configuration">Try the configuration
+                    tool</button>
+
+                </div>
+              </div>
+              <div class="app-card">
+                <span>
+                  Test
+                </span>
+                <div class="app-card__subtext">
+                  <div class="sofaImage"></div>
+                  Live the personalize audio experience.
+                </div>
+                <div class="app-card-buttons">
+                  <button class="content-button status-button open">
+                    <a href="./pages/sofa/Demo/www/index.html" target="_blank">Try the audio tester</a>
+                  </button>
+
+                </div>
+              </div>
+              <div class=" app-card">
+                <span>
+                  Share
+                </span>
+                <div class="app-card__subtext">
+                  <iframe src="./pages/chart/index.html" id="sofaChart" frameBorder="0" width="100%"
+                    height="140"></iframe>
+                  Download and share your HRTF
+                </div>
+                <div class="app-card-buttons">
+                  <a href="./pages/sofa/files/dtf_nh2.sofa">
+                    <button class="content-button status-button">Download</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROFILE PAGE-->
+        <div class="content-wrapper" id="configuration">
+          <div class="content-section">
+            <iframe src="./pages/faces/face5/examples/index.html" frameBorder="0" width="100%" height="650"></iframe>
+            <button class="content-button status-button" data-goto="profile">Update this scan</button>
+          </div>
+        </div>
+
+        <!-- SOFA PAGE-->
+        <div class="content-wrapper" id="sofa">
+          <div class="content-section">
+            <iframe src="./pages/sofa/Demo/www/index.html" frameBorder="0" width="100%" height="650" id="sofa"></iframe>
+            <button class="content-button status-button open" data-goto="profile">Go back</button>
+          </div>
+        </div>
+
+        <!-- APPS PAGE-->
+        <div class="content-wrapper" id="apps">
+          <div class="content-wrapper-header">
+            <div class="content-wrapper-context">
+              <h3 class="img-content">
+                Premium acoustic
+              </h3>
+              <div class="content-text">Grab yourself 10 high-definition scans to be used for amazing apps
+                experiences.
+                Give a try, you can always go back. We are sure you don't!!</div>
+              <button class="content-button">Go premium</button>
+            </div>
+            <img class="content-wrapper-img" src="./assets/images/head.png" alt="">
+          </div>
+          <div class="content-section">
+            <div class="content-section-title">My scans</div>
+            <ul>
+              <li class="adobe-product">
+                <div class="products">
+                  <img class="profile-img" src="./assets/images/head.png" alt="">
+                  Jane Doe
+                </div>
+                <span class="status">
+                  <span class="status-circle green"></span>
+                  Updated</span>
+                <div class="button-wrapper">
+                  <button class="content-button status-button open">Open</button>
+                  <div class="menu">
+                    <button class="dropdown">
+                      <ul>
+                        <li><a href="#">Go to Discover</a></li>
+                        <li><a href="#">Learn more</a></li>
+                        <li><a href="#">Uninstall</a></li>
+                      </ul>
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li class="adobe-product">
+                <div class="products">
+                  <img class="profile-img" src="./assets/images/head.png" alt="">
+                  Jane Doe
+                </div>
+
+                <span class="status">
+                  <span class="status-circle"></span>
+                  Update available
+                </span>
+                <div class="button-wrapper">
+                  <button class="content-button status-button">Update this scan</button>
+                  <div class="pop-up">
+                    <div class="pop-up__title">Update this scan
+                      <svg class="close" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M15 9l-6 6M9 9l6 6" />
+                      </svg>
+                    </div>
+                    <div class="pop-up__subtitle">Adjust your selections for advanced options as desired before
+                      continuing. <a href="#">Learn more</a></div>
+                    <div class="checkbox-wrapper">
+                      <input type="checkbox" id="check1" class="checkbox">
+                      <label for="check1">Import previous settings and preferences</label>
+                    </div>
+                    <div class="checkbox-wrapper">
+                      <input type="checkbox" id="check2" class="checkbox">
+                      <label for="check2">Remove old versions</label>
+                    </div>
+                    <div class="content-button-wrapper">
+                      <button class="content-button status-button open close">Cancel</button>
+                      <button class="content-button status-button">Continue</button>
+                    </div>
+                  </div>
+                  <div class="menu">
+                    <button class="dropdown">
+                      <ul>
+                        <li><a href="#">Go to Discover</a></li>
+                        <li><a href="#">Learn more</a></li>
+                        <li><a href="#">Uninstall</a></li>
+                      </ul>
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li class="adobe-product">
+                <div class="products">
+                  <img class="profile-img" src="./assets/images/head.png" alt="">
+                  Juliet Doe
+                </div>
+                <span class="status">
+                  <span class="status-circle green"></span>
+                  Updated</span>
+                <div class="button-wrapper">
+                  <button class="content-button status-button open">Open</button>
+                  <div class="menu">
+                    <button class="dropdown">
+                      <ul>
+                        <li><a href="#">Go to Discover</a></li>
+                        <li><a href="#">Learn more</a></li>
+                        <li><a href="#">Uninstall</a></li>
+                      </ul>
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="content-section">
+            <div class="content-section-title">Compatible Apps with your scans</div>
+            <div class="apps-card">
+              <div class="app-card">
+                <span>
+                  <img class="profile-img"
+                    src="https://upload.wikimedia.org/wikipedia/commons/7/74/Spotify_App_Logo.svg" alt="">
+                  Spotify
+                </span>
+                <div class="app-card__subtext">The digital music streaming service by excellence as you have never
+                  listened to before.</div>
+                <div class="app-card-buttons">
+                  <button class="content-button status-button open">Open</button>
+                  <!--<div class="menu"></div>-->
+                </div>
+              </div>
+              <div class="app-card">
+                <span>
+                  <img class="profile-img"
+                    src="data:image/png;base64,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"
+                    alt="">
+                  Half-Life. Alyx
+                </span>
+                <div class="app-card__subtext">Live the experience of a real first-person shooter against the
+                  oppressive
+                  alien Combine.</div>
+                <div class="app-card-buttons">
+                  <button class="content-button status-button open">Open</button>
+                  <!--<div class="menu"></div>-->
+                </div>
+              </div>
+              <div class="app-card">
+                <span>
+
+                  <img class="profile-img"
+                    src="https://static-00.iconduck.com/assets.00/netflix-icon-icon-2048x2048-yj41gpvr.png" alt="">
+                  Netflix
+                </span>
+                <div class="app-card__subtext">Movies, shows, documentaries, and original content at their awesome
+                  immersive sound quality.</div>
+                <div class="app-card-buttons">
+                  <button class="content-button status-button">Update</button>
+                  <div class="menu"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCANS PAGE-->
+        <div class="content-wrapper" id="myScans">
+          <div class="content-section">
+            <div class="content-section-title">My scans</div>
+            <ul id="myList_scan">
+
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- SCANS PAGE-->
+        <div class="content-wrapper" id="myExperiments">
+          <div class="content-section">
+            <div class="content-section-title">My experiments</div>
+            <ul id="myList_experiment">
+
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- HRTF PAGE-->
+        <div class="content-wrapper" id="hrtf">
+          <div class="content-section">
+
+
+            <div class="app-card-container">
+              <div class="apps-card">
+                <div class="app-card hrtf_info">
+                  <ul class="" style="height:50%;">
+                    <li style="height: 30px; justify-content: center;">Info</li>
+                    <li>
+                      <div class="products">
+                        Title
+                      </div>
+                      <span class="status">
+                        Jane Doe
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Date
+                      </div>
+                      <span class="status">
+                        22/03/2024
+                      </span>
+                    </li>
+                  </ul>
+                  <ul class="" style="margin-top: 30px">
+                    <li style="height: 30px; justify-content: center;">View</li>
+                    <li>
+                      <div class="products">
+                        3D point<br />cloud
+                      </div>
+                      <span class="status">
+                        <!-- Rounded switch -->
+                        <label class="switch">
+                          <input type="checkbox" id="3dPointCloud" checked>
+                          <span class="slider round"></span>
+                        </label>
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        3D Flame<br />Model
+                      </div>
+                      <span class="status">
+                        <label class="switch">
+                          <input type="checkbox" id="3dFlameModel">
+                          <span class="slider round"></span>
+                        </label>
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Acoustic<br />Response
+                      </div>
+                      <span class="status">
+                        <label class="switch">
+                          <input type="checkbox" id="AcousticResponse">
+                          <span class="slider round"></span>
+                        </label>
+                      </span>
+                    </li>
+
+                  </ul>
+                </div>
+                <div class="app-card hrtf_viz" title="Puro scopo illustrativo, sarà implementata la visualizzazione 3D">
+                  <iframe src="./pages/faces/face5/examples/index.html?small" id="configurator" frameBorder="0"
+                    width="100%" height="500"></iframe>
+
+                </div>
+              </div>
+            </div>
+            <div class="app-card-container">
+              <div class="apps-card">
+                <div class="app-card hrtf_control">
+                  <ul class="ranges">
+                    <li>
+                      <div>
+                        Shape
+                      </div>
+                      <span>
+                        <input type="range" value="3" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Expression
+                      </div>
+                      <span>
+                        <input type="range" value="8" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Pose
+                      </div>
+                      <span>
+                        <input type="range" value="5" max="10"></input>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- REAL TIME WEBCAM TEST1-->
+      <!--<div class="content-wrapper" id="test1">
+          <iframe class="cameraFrame" id="test1Frame" src="./test1/index.html" frameborder="0"
+            title="new scan"></iframe>
+        </div>-->
+
+      <!-- REAL TIME WEBCAM TEST2-->
+      <!--<div class="content-wrapper" id="test2">
+          <iframe class="cameraFrame" id="test2Frame" src="./test2/index.html" frameborder="0"
+            title="new scan"></iframe>
+        </div>-->
+    </div>
+  </div>
+  <div class="overlay-app"></div>
+  </div>
+</body>
+
+</html>
