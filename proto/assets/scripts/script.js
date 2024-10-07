@@ -5,8 +5,10 @@ $(document).ready(function () {
 });
 
 function Ready() {
-  generateList("scan");
-  generateList("experiment");
+  generateList("scans");
+  generateList("pointclouds");
+  generateList("meshmodels");
+  generateList("hrtfs");
 
   chkbox = {
     pointCloud: $("#3dPointCloud"),
@@ -76,7 +78,9 @@ function Ready() {
   });
 
   $(".hrtf_viz").on("click", function (e) {
-    window.alert("Immagine a puro scopo illustrativo. Sarà implementata la visualizzazione interattiva/3D");
+    window.alert(
+      "Immagine a puro scopo illustrativo. Sarà implementata la visualizzazione interattiva/3D"
+    );
   });
 
   /*$(".status-button:not(.open)").on("click", function (e) {
@@ -172,13 +176,50 @@ function generateList(type) {
   var nitems = randomInt(5, 10);
   var list = [];
 
-  for (var i = 0; i < nitems; i++) {
-    var item = {
-      title: randomName(),
-      status: randomStatus(),
-      date: randomDate(),
-    };
-    list.push(item);
+  if (type == "scans") {
+    for (var i = 0; i < nitems; i++) {
+      var item = {
+        title: randomName(),
+        status: randomStatus(),
+        date: randomDate(),
+        files: randomNumber(1, 3),
+        type: randomType(),
+      };
+      list.push(item);
+    }
+  } else if (type == "pointclouds") {
+    for (var i = 0; i < nitems; i++) {
+      var item = {
+        title: randomName(),
+        status: randomStatus(),
+        date: randomDate(),
+        type: randomType(),
+        reference: 1,
+      };
+      list.push(item);
+    }
+  } else if (type == "meshmodels") {
+    for (var i = 0; i < nitems; i++) {
+      var item = {
+        title: randomName(),
+        status: randomStatus(),
+        date: randomDate(),
+        type: randomType(),
+        reference: 2,
+      };
+      list.push(item);
+    }
+  } else if (type == "hrtfs") {
+    for (var i = 0; i < nitems; i++) {
+      var item = {
+        title: randomName(),
+        status: randomStatus(),
+        date: randomDate(),
+        type: randomType(),
+        reference: 3,
+      };
+      list.push(item);
+    }
   }
 
   //sort list by status, first completed, then processing and then to process
@@ -199,10 +240,25 @@ function generateList(type) {
   });
 
   var html = "";
+
+  //get all keys for the first item
+  if (list.length != 0) {
+    var keys = Object.keys(list[0]);
+
+    //create the header
+    html += `<li class="product header">`;
+    for (var key of keys) {
+      html += `<div class="${key}">${
+        key.charAt(0).toUpperCase() + key.slice(1)
+      }</div>`;
+    }
+    html += `<div class="actions">Actions</div></li>`;
+  }
+
   for (var item of list) {
     var buttonText =
       item.status === "To process"
-        ? "Process " + type
+        ? "Process"
         : item.status === "Processing..."
         ? ""
         : "View";
@@ -213,30 +269,36 @@ function generateList(type) {
         ? "hidden"
         : "open";
 
+    html += `<li class="product">`;
+
+    //debugger;
+    for (var index in item) {
+      html += `<div class="${index}">`;
+      if (index == "status") {
+        html += `<span class="status-circle ${getStatusColor(
+          item[index]
+        )}"></span>${item[index]}`;
+      } else if (index == "reference") {        
+        html += `<span class="reference">${randomReference(item[index])}</span>`;
+      } else {
+        html += `${item[index]}`;
+      }
+      html += `</div>`;
+    }
+
     html += `
-    <li class="product" data-goto="hrtf">
-    <div class="title">
-      ${item.title}
-    </div>
-    <span class="status">
-      <span class="status-circle ${getStatusColor(item.status)}"></span>      
-      ${item.status}
-    </span>
-    <span class="date">    
-      ${item.date}
-    </span>
-    <div class="button-wrapper">
-      <button class="content-button status-button ${buttonClass}">${buttonText}</button>
-      <div class="menu">
-        <button class="dropdown">
-          <ul>
-            <li><a href="#">Edit</a></li>
-            <li><a href="#">Archive</a></li>
-          </ul>
-        </button>
+      <div class="button-wrapper">
+        <button class="content-button status-button ${buttonClass}">${buttonText}</button>
+        <div class="menu">
+          <button class="dropdown">
+            <ul>
+              <li><a href="#">Edit</a></li>
+              <li><a href="#">Archive</a></li>
+            </ul>
+          </button>
+        </div>
       </div>
-    </div>
-  </li>`;
+    </li>`;
   }
 
   var listView = $("#myList_" + type);
@@ -266,6 +328,39 @@ function randomDate() {
   var date = new Date();
   date.setDate(date.getDate() - Math.floor(Math.random() * 10));
   return date.toLocaleDateString();
+}
+
+function randomType() {
+  var types = ["▲", "⟴"];
+  var alts = ["Imported", "Acquired"];
+  var res = types[Math.floor(Math.random() * types.length)];
+  return `<span title="${alts[types.indexOf(res)]}">${res}</span>`;
+}
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function randomReference(tot) {
+  var html = "";
+  var references = [
+    `<span class="mdi mdi-face-recognition" title="Scan #${randomNumber(
+      1,
+      150
+    )}"></span>`,
+    `<span class="mdi mdi-dots-hexagon " title="Point Cloud #${randomNumber(
+      1,
+      150
+    )}"></span>`,
+    `<span class="mdi mdi-cube" title="Mesh Model #${randomNumber(
+      1,
+      150
+    )}"></span>`,
+  ];
+  for (var i = 0; i < tot; i++) {
+    html += `${references[i]}`;
+  }
+  return html;
 }
 
 function getStatusColor(status) {

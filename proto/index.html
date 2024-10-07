@@ -24,13 +24,16 @@
       <div class="logo" data-goto="profile"></div>
       <div class="logo_text" data-goto="profile">HRTF.ly</div>
       <div class="header-menu">
+
+      </div>
+      <!--<div class="header-menu">
         <a class="menu-link  is-active" href="#">HRTF</a>
         <a class="menu-link" href="#">Test</a>
         <a class="menu-link notify" href="#">Test</a>
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Search">
-      </div>
+      </div>-->
       <div class="header-profile">
         <div class="notification">
           <span class="notification-number">3</span>
@@ -96,37 +99,65 @@
             </a>
             <a href="#" data-goto="myScans">
               <span class="mdi mdi-face-recognition"></span>
-              My scans
-              <span class="notification-number updates" id="myNumber_scan">3</span>
+              All scans
+              <span class="notification-number updates" id="myNumber_scans">3</span>
             </a>
           </div>
         </div>
         <div class="side-wrapper">
-          <div class="side-title">Experiments</div>
+          <div class="side-title">Point clouds</div>
           <div class="side-menu">
-            <a href="#" data-goto="apps" data-goto="newExperiment">
-              <span class="mdi mdi mdi-cast-audio-variant"></span>
-              New experiment
+            <a href="#" data-goto="apps" data-goto="newPointCloud">
+              <span class="mdi mdi-dots-circle"></span>
+              New point cloud
             </a>
-            <a href="#" data-goto="myExperiments">
-              <span class="mdi mdi-ear-hearing-loop"></span>
-              My experiments
-              <span class="notification-number updates" id="myNumber_experiment">3</span>
+            <a href="#" data-goto="myPointClouds">
+              <span class="mdi mdi-dots-hexagon "></span>
+              All point clouds
+              <span class="notification-number updates" id="myNumber_pointclouds">3</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="side-wrapper">
+          <div class="side-title">Mesh models</div>
+          <div class="side-menu">
+            <a href="#" data-goto="apps" data-goto="newMeshModel">
+              <span class="mdi mdi-cube-outline"></span>
+              New mesh model
+            </a>
+            <a href="#" data-goto="myMeshModels">
+              <span class="mdi mdi-cube"></span>
+              All mesh models
+              <span class="notification-number updates" id="myNumber_meshmodels">3</span>
             </a>
           </div>
         </div>
         <div class="side-wrapper">
           <div class="side-title">HRTF</div>
           <div class="side-menu is-active">
-            <a href="#" data-goto="hrtf">
+            <a href="#" data-goto="newHrtf">
               <span class="mdi mdi mdi-ear-hearing"></span>
-              My HRTF
+              New HRTF
+            </a>
+          </div>
+          <div class="side-menu">
+            <a href="#" data-goto="myHRTFs">
+              <span class="mdi mdi mdi-ear-hearing-loop"></span>
+              All HRTFs
+              <span class="notification-number updates" id="myNumber_hrtfs">3</span>
             </a>
           </div>
           <div class="side-menu">
             <a href="#" data-goto="sofa">
               <span class="mdi mdi mdi-cast-audio"></span>
               Sofa Viewer
+            </a>
+          </div>
+          <div class="side-menu is-active">
+            <a href="#" data-goto="hrtf">
+              <span class="mdi mdi mdi-ear-hearing"></span>
+              HRTF
             </a>
           </div>
         </div>
@@ -159,7 +190,7 @@
             </a>
           </div>
         </div>-->
-        <div class="side-wrapper">
+        <!--<div class="side-wrapper">
           <div class="side-title">Resources</div>
           <div class="side-menu">
             <a href="#">
@@ -175,7 +206,7 @@
               Contact us
             </a>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="main-container">
 
@@ -487,23 +518,43 @@
         <!-- SCANS PAGE-->
         <div class="content-wrapper" id="myScans">
           <div class="content-section">
-            <div class="content-section-title">My scans</div>
-            <ul id="myList_scan">
+            <div class="content-section-title">All scans</div>
+            <ul id="myList_scans">
 
             </ul>
           </div>
 
         </div>
 
-        <!-- SCANS PAGE-->
-        <div class="content-wrapper" id="myExperiments">
+        <!-- POINT CLOUDS PAGE-->
+        <div class="content-wrapper" id="myPointClouds">
           <div class="content-section">
-            <div class="content-section-title">My experiments</div>
-            <ul id="myList_experiment">
+            <div class="content-section-title">All Point Clouds</div>
+            <ul id="myList_pointclouds">
 
             </ul>
           </div>
 
+        </div>
+
+        <!-- MESH MODELS PAGE-->
+        <div class="content-wrapper" id="myMeshModels">
+          <div class="content-section">
+            <div class="content-section-title">All Mesh Models</div>
+            <ul id="myList_meshmodels">
+
+            </ul>
+          </div>
+        </div>
+
+        <!-- HRTFs PAGE-->
+        <div class="content-wrapper" id="myHRTFs">
+          <div class="content-section">
+            <div class="content-section-title">All HRTFs</div>
+            <ul id="myList_hrtfs">
+
+            </ul>
+          </div>
         </div>
 
         <!-- HRTF PAGE-->
