@@ -24,7 +24,13 @@ function Ready() {
     console.log(id);
 
     $(".content-wrapper").hide();
-    $("#" + id).show();
+
+    if (id.includes("new->")) {
+      $("#new_").show();
+      $("#newTitle").text(id.replace("new->", "").replace("_", " "));
+    } else {
+      $("#" + id).show();
+    }
   });
 
   //if a checkbox is clicked
@@ -104,14 +110,25 @@ function Ready() {
     document.body.classList.toggle("light-mode");
   });
 
-  updateBasedOnCheckbox();
+  $("#profileTabs a").on("click", function (e) {
+    e.preventDefault();
+    $("#profileTabs a").removeClass("active");
+    $(this).addClass("active");
+    $(".listProfile").hide();
+    $("#myListProfile_"+$(this).attr("data-tab")).show();
+  });
 
-  $("#hrtf").show();
+  //updateBasedOnCheckbox();
+
+  $("#profile").show();
+  $(".listProfile").hide();
+  $("#myListProfile_scans").show();
+  $("#profileTabs a[data-tab=scans]").addClass("active");
 
   console.log("Ready");
 
   window.setTimeout(function () {
-    $("#hrtf").show();
+    $("#profile").show();
   }, 1000);
 }
 
@@ -173,7 +190,7 @@ function updateBasedOnCheckbox(thiis) {
 }
 
 function generateList(type) {
-  var nitems = randomInt(5, 10);
+  var nitems = randomInt(7, 13);
   var list = [];
 
   if (type == "scans") {
@@ -183,7 +200,7 @@ function generateList(type) {
         status: randomStatus(),
         date: randomDate(),
         files: randomNumber(1, 3),
-        type: randomType(),
+        type: randomType(type),
       };
       list.push(item);
     }
@@ -193,7 +210,7 @@ function generateList(type) {
         title: randomName(),
         status: randomStatus(),
         date: randomDate(),
-        type: randomType(),
+        type: randomType(type),
         reference: 1,
       };
       list.push(item);
@@ -204,7 +221,7 @@ function generateList(type) {
         title: randomName(),
         status: randomStatus(),
         date: randomDate(),
-        type: randomType(),
+        type: randomType(type),
         reference: 2,
       };
       list.push(item);
@@ -215,7 +232,7 @@ function generateList(type) {
         title: randomName(),
         status: randomStatus(),
         date: randomDate(),
-        type: randomType(),
+        type: randomType(type),
         reference: 3,
       };
       list.push(item);
@@ -269,6 +286,8 @@ function generateList(type) {
         ? "hidden"
         : "open";
 
+    var goto = buttonClass === "open" ? "expandView_" + type : "";
+
     html += `<li class="product">`;
 
     //debugger;
@@ -278,8 +297,10 @@ function generateList(type) {
         html += `<span class="status-circle ${getStatusColor(
           item[index]
         )}"></span>${item[index]}`;
-      } else if (index == "reference") {        
-        html += `<span class="reference">${randomReference(item[index])}</span>`;
+      } else if (index == "reference") {
+        html += `<span class="reference">${randomReference(
+          item[index]
+        )}</span>`;
       } else {
         html += `${item[index]}`;
       }
@@ -288,7 +309,7 @@ function generateList(type) {
 
     html += `
       <div class="button-wrapper">
-        <button class="content-button status-button ${buttonClass}">${buttonText}</button>
+        <button class="content-button status-button ${buttonClass}" data-goto="${goto}">${buttonText}</button>
         <div class="menu">
           <button class="dropdown">
             <ul>
@@ -303,6 +324,9 @@ function generateList(type) {
 
   var listView = $("#myList_" + type);
   listView.html(html);
+
+  var listProfileView = $("#myListProfile_" + type);
+  listProfileView.html(html);
 
   $("#myNumber_" + type).text(nitems);
 }
@@ -330,11 +354,21 @@ function randomDate() {
   return date.toLocaleDateString();
 }
 
-function randomType() {
-  var types = ["▲", "⟴"];
-  var alts = ["Imported", "Acquired"];
+function randomType(type) {
+  if (type == "scans") {
+    var types = [
+      `<span class="mdi mdi-cloud-upload-outline" title="Imported"></span>`,
+      `<span class="mdi mdi-radiobox-marked" title="Acquired"></span>`,
+    ];
+  } else {
+    var types = [
+      `<span class="mdi mdi-cloud-upload-outline" title="Imported"></span>`,
+      `<span class="mdi mdi-abacus" title="Processed"></span>`,
+    ];
+  }
+
   var res = types[Math.floor(Math.random() * types.length)];
-  return `<span title="${alts[types.indexOf(res)]}">${res}</span>`;
+  return res;
 }
 
 function randomNumber(min, max) {

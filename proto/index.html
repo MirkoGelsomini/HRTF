@@ -93,11 +93,11 @@
         <div class="side-wrapper">
           <div class="side-title">Scans</div>
           <div class="side-menu">
-            <a href="#" data-goto="newScan">
+            <a href="#" data-goto="new->Scan">
               <span class="mdi mdi mdi-scan-helper"></span>
               New scan
             </a>
-            <a href="#" data-goto="myScans">
+            <a href="#" data-goto="allScans">
               <span class="mdi mdi-face-recognition"></span>
               All scans
               <span class="notification-number updates" id="myNumber_scans">3</span>
@@ -107,11 +107,11 @@
         <div class="side-wrapper">
           <div class="side-title">Point clouds</div>
           <div class="side-menu">
-            <a href="#" data-goto="apps" data-goto="newPointCloud">
+            <a href="#" data-goto="new->Point_Cloud">
               <span class="mdi mdi-dots-circle"></span>
               New point cloud
             </a>
-            <a href="#" data-goto="myPointClouds">
+            <a href="#" data-goto="allPointClouds">
               <span class="mdi mdi-dots-hexagon "></span>
               All point clouds
               <span class="notification-number updates" id="myNumber_pointclouds">3</span>
@@ -122,11 +122,11 @@
         <div class="side-wrapper">
           <div class="side-title">Mesh models</div>
           <div class="side-menu">
-            <a href="#" data-goto="apps" data-goto="newMeshModel">
+            <a href="#" data-goto="new->Mesh_Model">
               <span class="mdi mdi-cube-outline"></span>
               New mesh model
             </a>
-            <a href="#" data-goto="myMeshModels">
+            <a href="#" data-goto="allMeshModels">
               <span class="mdi mdi-cube"></span>
               All mesh models
               <span class="notification-number updates" id="myNumber_meshmodels">3</span>
@@ -136,13 +136,13 @@
         <div class="side-wrapper">
           <div class="side-title">HRTF</div>
           <div class="side-menu is-active">
-            <a href="#" data-goto="newHrtf">
+            <a href="#" data-goto="new->Hrtf">
               <span class="mdi mdi mdi-ear-hearing"></span>
               New HRTF
             </a>
           </div>
           <div class="side-menu">
-            <a href="#" data-goto="myHRTFs">
+            <a href="#" data-goto="allHRTFs">
               <span class="mdi mdi mdi-ear-hearing-loop"></span>
               All HRTFs
               <span class="notification-number updates" id="myNumber_hrtfs">3</span>
@@ -154,12 +154,12 @@
               Sofa Viewer
             </a>
           </div>
-          <div class="side-menu is-active">
+          <!--<div class="side-menu is-active">
             <a href="#" data-goto="hrtf">
               <span class="mdi mdi mdi-ear-hearing"></span>
               HRTF
             </a>
-          </div>
+          </div>-->
         </div>
         <!--<div class="side-wrapper">
           <div class="side-title">Categories</div>
@@ -220,8 +220,8 @@
           </div>
         </div>-->
 
-        <!-- PROFILE PAGE-->
-        <div class="content-wrapper" id="profile">
+        <!-- OLD PROFILE PAGE-->
+        <!--<div class="content-wrapper" id="profile">
           <div class="content-section">
             <div class="apps-card">
               <div class="app-card">
@@ -340,6 +340,92 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>-->
+
+        <!-- PROFILE PAGE-->
+        <div class="content-wrapper" id="profile">
+          <div class="content-section">
+            <div class="apps-card">
+              <div class="app-card">
+                <ul class="userInfo">
+                  <li>
+                    <div class="products">
+                      First Name
+                    </div>
+                    <span class="status">
+                      Jane
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Last Name
+                    </div>
+                    <span class="status">
+                      Doe
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Age
+                    </div>
+                    <span class="status">
+                      45
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      E-mail
+                    </div>
+                    <span class="status">
+                      <span class="mdi mdi-email" title="john.doe@gmail.com"></span>
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Dummy
+                    </div>
+                    <span class="status">
+                      Text
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Dummy
+                    </div>
+                    <span class="status">
+                      Text
+                    </span>
+                  </li>
+                  <li>
+                    <div class="products">
+                      Dummy
+                    </div>
+                    <span class="status">
+                      Text
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div class="app-card userModel">
+
+                <video src="./assets/videos/1.mp4" id="userModel" frameBorder="0" width="100%" height="280" autoplay loop></video>
+              </div>
+            </div>
+          </div>
+          <div class="content-section">
+
+            <div class="content-section-title tabs" id="profileTabs" style="margin:auto;">
+              <a data-tab="scans">Scans</a>
+              <a data-tab="pointclouds">Point clouds</a>
+              <a data-tab="meshmodels">Mesh models</a>
+              <a data-tab="hrtfs">HRTFs</a>
+            </div>
+            <ul class="listProfile" id="myListProfile_scans"></ul>
+            <ul class="listProfile" id="myListProfile_pointclouds"></ul>
+            <ul class="listProfile" id="myListProfile_meshmodels"></ul>
+            <ul class="listProfile" id="myListProfile_hrtfs"></ul>
+
           </div>
         </div>
 
@@ -516,7 +602,7 @@
         </div>
 
         <!-- SCANS PAGE-->
-        <div class="content-wrapper" id="myScans">
+        <div class="content-wrapper" id="allScans">
           <div class="content-section">
             <div class="content-section-title">All scans</div>
             <ul id="myList_scans">
@@ -527,7 +613,7 @@
         </div>
 
         <!-- POINT CLOUDS PAGE-->
-        <div class="content-wrapper" id="myPointClouds">
+        <div class="content-wrapper" id="allPointClouds">
           <div class="content-section">
             <div class="content-section-title">All Point Clouds</div>
             <ul id="myList_pointclouds">
@@ -538,7 +624,7 @@
         </div>
 
         <!-- MESH MODELS PAGE-->
-        <div class="content-wrapper" id="myMeshModels">
+        <div class="content-wrapper" id="allMeshModels">
           <div class="content-section">
             <div class="content-section-title">All Mesh Models</div>
             <ul id="myList_meshmodels">
@@ -548,7 +634,7 @@
         </div>
 
         <!-- HRTFs PAGE-->
-        <div class="content-wrapper" id="myHRTFs">
+        <div class="content-wrapper" id="allHRTFs">
           <div class="content-section">
             <div class="content-section-title">All HRTFs</div>
             <ul id="myList_hrtfs">
@@ -557,16 +643,16 @@
           </div>
         </div>
 
-        <!-- HRTF PAGE-->
-        <div class="content-wrapper" id="hrtf">
-          <div class="content-section">
+        <!-- POINT CLOUDS EXPANDED VIEW PAGE-->
+        <div class="content-wrapper" id="expandView_scans">
+          <div class="content-section" style="margin-top: 0px;">
 
 
             <div class="app-card-container">
               <div class="apps-card">
-                <div class="app-card hrtf_info">
+                <div class="app-card" style="display: inline-block; width:31%;">
                   <ul class="" style="height:50%;">
-                    <li style="height: 30px; justify-content: center;">Info</li>
+                    <li style="justify-content: center;">Information</li>
                     <li>
                       <div class="products">
                         Title
@@ -583,60 +669,22 @@
                         22/03/2024
                       </span>
                     </li>
+                    <li>
+                      <div class="products">
+                        Type
+                      </div>
+                      <span class="status">
+                        Processed <span class="mdi mdi-dots-hexagon " title="Point Cloud #123"></span>
+                      </span>
+                    </li>
                   </ul>
-                  <ul class="" style="margin-top: 30px">
-                    <li style="height: 30px; justify-content: center;">View</li>
-                    <li>
-                      <div class="products">
-                        3D point<br />cloud
-                      </div>
-                      <span class="status">
-                        <!-- Rounded switch -->
-                        <label class="switch">
-                          <input type="checkbox" id="3dPointCloud" checked>
-                          <span class="slider round"></span>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <div class="products">
-                        3D Flame<br />Model
-                      </div>
-                      <span class="status">
-                        <label class="switch">
-                          <input type="checkbox" id="3dFlameModel">
-                          <span class="slider round"></span>
-                        </label>
-                      </span>
-                    </li>
-                    <li>
-                      <div class="products">
-                        Acoustic<br />Response
-                      </div>
-                      <span class="status">
-                        <label class="switch">
-                          <input type="checkbox" id="AcousticResponse">
-                          <span class="slider round"></span>
-                        </label>
-                      </span>
-                    </li>
-
-                  </ul>
-                </div>
-                <div class="app-card hrtf_viz" title="Puro scopo illustrativo, sarà implementata la visualizzazione 3D">
-                  <iframe src="./pages/faces/face5/examples/index.html?small" id="configurator" frameBorder="0"
-                    width="100%" height="500"></iframe>
 
                 </div>
-              </div>
-            </div>
-            <div class="app-card-container">
-              <div class="apps-card">
-                <div class="app-card hrtf_control">
+                <div class="app-card" style="display: inline-block; width:66%; margin-left: 0px;">
                   <ul class="ranges">
                     <li>
                       <div>
-                        Shape
+                        Parameter 1
                       </div>
                       <span>
                         <input type="range" value="3" max="10"></input>
@@ -644,7 +692,7 @@
                     </li>
                     <li>
                       <div>
-                        Expression
+                        Parameter 2
                       </div>
                       <span>
                         <input type="range" value="8" max="10"></input>
@@ -652,7 +700,15 @@
                     </li>
                     <li>
                       <div>
-                        Pose
+                        Parameter 3
+                      </div>
+                      <span>
+                        <input type="range" value="5" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 4
                       </div>
                       <span>
                         <input type="range" value="5" max="10"></input>
@@ -660,10 +716,334 @@
                     </li>
                   </ul>
                 </div>
+
+              </div>
+            </div>
+            <div class="app-card-container" style="margin-top: 20px">
+              <div class="apps-card">
+                <div class="app-card" style="width:99%; height: 55vh; overflow: hidden;"
+                  title="Puro scopo illustrativo, sarà implementata la visualizzazione 3D">
+                  <video src="./assets/videos/4.webm" id="configurator" frameBorder="0" width="100%" height="500"
+                    style="overflow:hidden" autoplay controls>
+
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- POINT CLOUDS EXPANDED VIEW PAGE-->
+        <div class="content-wrapper" id="expandView_pointclouds">
+          <div class="content-section" style="margin-top: 0px;">
+
+
+            <div class="app-card-container">
+              <div class="apps-card">
+                <div class="app-card" style="display: inline-block; width:31%;">
+                  <ul class="" style="height:50%;">
+                    <li style="justify-content: center;">Information</li>
+                    <li>
+                      <div class="products">
+                        Title
+                      </div>
+                      <span class="status">
+                        Jane Doe
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Date
+                      </div>
+                      <span class="status">
+                        22/03/2024
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Type
+                      </div>
+                      <span class="status">
+                        Processed <span class="mdi mdi-dots-hexagon " title="Point Cloud #123"></span>
+                      </span>
+                    </li>
+                  </ul>
+
+                </div>
+                <div class="app-card" style="display: inline-block; width:66%; margin-left: 0px;">
+                  <ul class="ranges">
+                    <li>
+                      <div>
+                        Parameter 1
+                      </div>
+                      <span>
+                        <input type="range" value="3" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 2
+                      </div>
+                      <span>
+                        <input type="range" value="8" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 3
+                      </div>
+                      <span>
+                        <input type="range" value="5" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 4
+                      </div>
+                      <span>
+                        <input type="range" value="5" max="10"></input>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+            <div class="app-card-container" style="margin-top: 20px">
+              <div class="apps-card">
+                <div class="app-card" style="width:99%; height: 55vh; overflow: hidden;"
+                  title="Puro scopo illustrativo, sarà implementata la visualizzazione 3D">
+                  <iframe src="./pages/faces/face6/" id="configurator" frameBorder="0" width="100%" height="500"
+                    style="overflow:hidden "></iframe>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- POINT CLOUDS EXPANDED VIEW PAGE-->
+        <div class="content-wrapper" id="expandView_meshmodels">
+          <div class="content-section" style="margin-top: 0px;">
+
+
+            <div class="app-card-container">
+              <div class="apps-card">
+                <div class="app-card" style="display: inline-block; width:31%;">
+                  <ul class="" style="height:50%;">
+                    <li style="justify-content: center;">Information</li>
+                    <li>
+                      <div class="products">
+                        Title
+                      </div>
+                      <span class="status">
+                        Jane Doe
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Date
+                      </div>
+                      <span class="status">
+                        22/03/2024
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Type
+                      </div>
+                      <span class="status">
+                        Processed <span class="mdi mdi-dots-hexagon " title="Point Cloud #123"></span>
+                      </span>
+                    </li>
+                  </ul>
+
+                </div>
+                <div class="app-card" style="display: inline-block; width:66%; margin-left: 0px;">
+                  <ul class="ranges">
+                    <li>
+                      <div>
+                        Parameter 1
+                      </div>
+                      <span>
+                        <input type="range" value="3" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 2
+                      </div>
+                      <span>
+                        <input type="range" value="8" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 3
+                      </div>
+                      <span>
+                        <input type="range" value="5" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 4
+                      </div>
+                      <span>
+                        <input type="range" value="5" max="10"></input>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+            <div class="app-card-container" style="margin-top: 20px">
+              <div class="apps-card">
+                <div class="app-card" style="width:99%; height: 55vh"
+                  title="Puro scopo illustrativo, sarà implementata la visualizzazione 3D">
+                  <iframe src="./pages/faces/face5/examples/index.html?small" id="configurator" frameBorder="0"
+                    width="100%" height="500"></iframe>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- POINT CLOUDS EXPANDED VIEW PAGE-->
+        <div class="content-wrapper" id="expandView_hrtfs">
+          <div class="content-section" style="margin-top: 0px;">
+
+
+            <div class="app-card-container">
+              <div class="apps-card">
+                <div class="app-card" style="display: inline-block; width:31%;">
+                  <ul class="" style="height:50%;">
+                    <li style="justify-content: center;">Information</li>
+                    <li>
+                      <div class="products">
+                        Title
+                      </div>
+                      <span class="status">
+                        Jane Doe
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Date
+                      </div>
+                      <span class="status">
+                        22/03/2024
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Type
+                      </div>
+                      <span class="status">
+                        Processed <span class="mdi mdi-dots-hexagon " title="Point Cloud #123"></span>
+                      </span>
+                    </li>
+                  </ul>
+
+                </div>
+                <div class="app-card" style="display: inline-block; width:66%; margin-left: 0px;">
+                  <ul class="ranges">
+                    <li>
+                      <div>
+                        Parameter 1
+                      </div>
+                      <span>
+                        <input type="range" value="3" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 2
+                      </div>
+                      <span>
+                        <input type="range" value="8" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 3
+                      </div>
+                      <span>
+                        <input type="range" value="5" max="10"></input>
+                      </span>
+                    </li>
+                    <li>
+                      <div>
+                        Parameter 4
+                      </div>
+                      <span>
+                        <input type="range" value="5" max="10"></input>
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+            <div class="app-card-container" style="margin-top: 20px">
+              <div class="apps-card">
+                <div class="app-card" style="width:99%; height: 55vh"
+                  title="Puro scopo illustrativo, sarà implementata la visualizzazione 3D">
+                  <img src="./assets/images/acousticResponse.jpg" title="acoustic response" height="450px"></img>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- POINT CLOUDS EXPANDED VIEW PAGE-->
+        <div class="content-wrapper" id="new_">
+          <div class="content-section" style="margin-top: 10px;">
+            <div class="app-card-container" style="width: 100%;">
+              <div class="apps-card" style="width: 100%;">
+                <!--a form with which create a new scan inserting title and upload files or record-->
+                <form style="width: 100%;">
+                  <ul>
+                    <li style="justify-content: center;">Import a new&nbsp;<b id="newTitle">scan</b></li>
+                    <li>
+                      <div class="products">
+                        Title *
+                      </div>
+                      <span class="status" style="margin-right:100px;">
+                        <input type="text" id="title" name="title" placeholder="Title" required>
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        Scan date
+                      </div>
+                      <span class="status" style="margin-right:100px;">
+                        <input type="date" id="date" name="date" required>
+                      </span>
+                    </li>
+                    <li>
+                      <div class="products">
+                        File(s) *
+                      </div>
+                      <span class="status" style="margin-right:100px;">
+                        <input type="file" id="file" name="file" required>
+                      </span>
+                    </li>
+                  </ul>
+
+              </div>
+              <div class="content-button-wrapper">
+                <button class="content-button status-button open close">Reset form</button>
+                <button class="content-button status-button" style="float:right">Import</button>
+              </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
 

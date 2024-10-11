@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face 6</title>
+</head>
+
+<body style="overflow: hidden;">
+    <!-- Import the component -->
+    <script type="module" src="./model-viewer.min.js"></script>
+
+    <!-- Use it like any other HTML element -->
+    <model-viewer
+        alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum"
+        src="./pointcloud.glb" ar environment-image="./moon_1k.hdr"
+        poster="./poster.webp" shadow-intensity="1" camera-controls
+        touch-action="pan-y" width="100vw" height="100vh" style="width:100vw; height: 100vh"></model-viewer>
+</body>
+
+</html>

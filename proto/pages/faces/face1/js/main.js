@@ -16,7 +16,7 @@ var scene = new THREE.Scene(),
   currentLighting,
   startTime = new Date().getTime(),
   tElapsed,
-  paused = false,
+  paused = true,
   mouseDown = false,
   beingDragged = false,
   cameraLocked = true,
@@ -54,6 +54,7 @@ scene.add(
  * @param {String} name The location of the collada file without ".dae" extension
  */
 function colladaLoad(name) {
+  debugger;
   colladaLoader.load(name + ".dae", function (collada) {
     mesh = collada.scene;
     currentBust = name;
@@ -281,8 +282,14 @@ function getRandomColour(rL, rU, gL, gU, bL, bU) {
 }
 
 /** Outputs the name of a random bust. */
-function getRandomBust() {
-  return getBustName(0);
+function getBust() {
+  //get the url parameter b
+  var url = new URL(window.location.href);
+  var bust = url.searchParams.get("b");
+  if (bust !== null) {
+    return getBustName(bust*1+0);
+  }
+  return "Lincoln";
   //return getBustName(~~(Math.random() * (NUM_OF_BUSTS - 1)));
 }
 
@@ -303,6 +310,10 @@ function getBustName(num) {
       return "Wailly";
     case 6:
       return "pjanic";
+    case 7:
+      return "loris";
+    case 8:
+      return "pointcloud";
     default:
       return null;
   }
@@ -323,8 +334,14 @@ function getBustNumber(name) {
       return 4;
     case "Wailly":
       return 5;
+    case "pjanic":
+      return 6;
+    case "loris":
+      return 7;
+    case "pointcloud":
+      return 8;
     default:
-      return null;
+      return -1;
   }
 }
 
@@ -522,7 +539,7 @@ function init() {
     });
 
   /** Setup Init */
-  setBust(getRandomBust());
+  setBust(getBust());
   setLighting(getRandomLighting());
   camera.position.set(0, 0, 0);
 

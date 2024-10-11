@@ -1197,3 +1197,19 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+
+#profileTabs a{
+  padding: 10px;
+  padding-bottom: 2px;
+  background-color: var(--dropdown-hover);
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#profileTabs a.active{
+  
+  background-color: var(--scrollbar-bg);
+  color: var(--content-title-color);
+}

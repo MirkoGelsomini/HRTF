@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<COLLADA version="1.5.0" xmlns="http://www.collada.org/2008/03/COLLADASchema">
+  <asset>
+    <contributor />
+    <unit meter="1" />
+  </asset>
+  <library_lights />
+  <library_materials>
+    <material id="Scene_-_Root" name="Scene_-_Root">
+      <instance_effect url="#effect-Scene_-_Root" />
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="effect-Scene_-_Root" />
+  </library_effects>
+  <library_cameras />
+  <library_geometries />
+  <library_images />
+  <library_visual_scenes>
+    <visual_scene id="Scene">
+      <node id="Sketchfab_model" sid="Sketchfab_model" name="Sketchfab_model" type="NODE">
+        <matrix>1 0 0 0 0 2.220446049250313E-16 1 0 0 -1 2.220446049250313E-16 0 0 0 0 1</matrix>
+        <node id="Geode" sid="Geode" name="Geode" type="NODE">
+          <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <node id="Object_2" sid="Object_2" name="Object_2" type="NODE">
+            <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          </node>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <library_animations />
+  <scene>
+    <instance_visual_scene url="#Scene" />
+  </scene>
+</COLLADA>
